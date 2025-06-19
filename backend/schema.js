@@ -26,6 +26,18 @@ const resolvers = {
     animes: () => animeList,
     anime: (_, { id }) => animeList.find((a) => a.id === id),
   },
+
+  Mutation:{
+   addAnime: (_, { title, description }) => {
+        const newAnime = {
+            id: String(Date.now()), 
+            title,
+            description
+        };
+        animeList.push(newAnime);
+      return newAnime;
+    }
+  }
 }
 
 module.exports = { typeDefs, resolvers };
