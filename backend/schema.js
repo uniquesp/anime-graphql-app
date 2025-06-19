@@ -36,7 +36,15 @@ const resolvers = {
         };
         animeList.push(newAnime);
       return newAnime;
-    }
+    },
+
+    updateAnime: (_,{id,title,description}) =>{
+        const anime = animeList.find((a) => a.id === id)
+        if(!anime) return null;
+        if (title !== undefined) anime.title = title;
+        if (description !== undefined) anime.description = description;
+        return anime;
+    },
   }
 }
 
