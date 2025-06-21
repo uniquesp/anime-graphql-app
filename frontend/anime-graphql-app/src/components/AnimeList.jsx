@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client'
+import { gql, useQuery,useMutation } from '@apollo/client'
 import { useState } from 'react'
 import EditAnimeModal from './EditAnimeModal'
 
@@ -11,10 +11,20 @@ const GET_ANIMES = gql`
     }
   }
 `
+const DELETE_ANIME = gql`
+  mutation DeleteAnime($id: ID!) {
+    deleteAnime(id: $id) {
+      id
+    }
+  }
+`
 
 function AnimeList() {
   const { loading, error, data } = useQuery(GET_ANIMES)
   const [editingAnime, setEditingAnime] = useState(null) 
+  const [deleteAnime] = useMutation(DELETE_ANIME, {
+    refetchQueries: ['GetAnimes'] 
+  })
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error: {error.message}</p>
@@ -61,7 +71,11 @@ function AnimeList() {
                   color: '#dc3545',
                   cursor: 'pointer'
                 }}
-                onClick={() => console.log('Delete anime:', anime.id)}
+                 onClick={() => {
+                    if (window.confirm('Are you sure you want to delete this anime?')) {
+                      deleteAnime({ variables: { id: anime.id } })
+                    }
+                  }}
               >
                 Delete
               </button>

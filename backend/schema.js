@@ -45,6 +45,13 @@ const resolvers = {
         if (description !== undefined) anime.description = description;
         return anime;
     },
+    deleteAnime: (_, { id }) => {
+    const index = animeList.findIndex((a) => a.id === id)
+        if (index === -1) throw new Error('Anime not found')
+        const deleted = animeList.splice(index, 1)[0]
+        return deleted
+    }
+
   }
 }
 
