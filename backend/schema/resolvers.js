@@ -1,4 +1,5 @@
-const { animes } = require("../data");
+const { animes } = require('../data');
+const { offsetPaginate} = require('./utils/pagination')
 
 let animeList = [...animes];
 
@@ -6,6 +7,10 @@ const resolvers = {
     Query: {
     animes: () => animeList,
     anime: (_, { id }) => animeList.find((a) => a.id === id),
+
+    offsetAnimes: (_, { offset, limit }) => {
+      return offsetPaginate(animeList, offset, limit);
+    },
   },
 
   Mutation:{

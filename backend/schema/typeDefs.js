@@ -10,7 +10,16 @@ type Anime {
 type Query{
     animes: [Anime!]!
     anime(id: ID!): Anime
+
+    offsetAnimes(offset: Int!, limit: Int!): OffsetAnimeResult!
 }
+
+type OffsetAnimeResult {
+    items: [Anime!]!
+    totalCount: Int!
+    hasMore: Boolean!
+}
+
 
 type Mutation{
     addAnime(title: String!, description: String!): Anime

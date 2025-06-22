@@ -9,3 +9,17 @@ export const GET_ANIMES = gql`
     }
   }
 `;
+
+export const GET_OFFSET_ANIMES = gql`
+  query GetOffsetAnimes($offset: Int!, $limit: Int!) {
+    offsetAnimes(offset: $offset, limit: $limit) {
+      items {
+        id
+        title
+        description
+      }
+      totalCount
+      hasMore
+    }
+  }
+`;
