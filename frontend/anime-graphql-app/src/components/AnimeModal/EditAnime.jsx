@@ -1,15 +1,7 @@
-import { gql, useMutation } from '@apollo/client'
-import { useState, useEffect } from 'react'
+import { useMutation } from '@apollo/client'
+import { useState } from 'react'
+import { UPDATE_ANIME } from '../../graphql/mutation';
 
-const UPDATE_ANIME = gql`
-  mutation UpdateAnime($id: ID!, $title: String!, $description: String!) {
-    updateAnime(id: $id, title: $title, description: $description) {
-      id
-      title
-      description
-    }
-  }
-`
 
 function EditAnimeModal({ anime, closeModal }) {
   const [title, setTitle] = useState(anime.title)
