@@ -23,3 +23,19 @@ export const GET_OFFSET_ANIMES = gql`
     }
   }
 `;
+
+export const GET_CURSOR_ANIMES = gql`
+  query GetCursorAnimes($after: ID, $limit: Int!) {
+    cursorAnimes(after: $after, limit: $limit) {
+      items {
+        id
+        title
+        description
+      }
+      pageInfo {
+        endCursor
+        hasMore
+      }
+    }
+  }
+`;

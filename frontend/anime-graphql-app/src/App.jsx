@@ -3,7 +3,7 @@ import PaginationSwitcher from './components/PaginationSwitcher';
 import AddAnime from './components/AnimeModal/AddAnime'
 import LoadAll from './components/Pagination/LoadAll';
 import OffsetPagination from './components/Pagination/OffsetPagination'
-
+import CursorPagination from './components/Pagination/CursorPagination'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -13,6 +13,9 @@ function App() {
   switch (view) {
     case 'offset':
       ViewComponent = OffsetPagination;
+      break;
+    case 'cursor':
+      ViewComponent = CursorPagination;
       break;
     default:
       ViewComponent = LoadAll;

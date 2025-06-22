@@ -12,6 +12,7 @@ type Query{
     anime(id: ID!): Anime
 
     offsetAnimes(offset: Int!, limit: Int!): OffsetAnimeResult!
+    cursorAnimes(after: ID, limit: Int!): CursorAnimeResult!
 }
 
 type OffsetAnimeResult {
@@ -20,6 +21,15 @@ type OffsetAnimeResult {
     hasMore: Boolean!
 }
 
+type CursorAnimeResult {
+    items: [Anime!]!
+    pageInfo: PageInfo!
+}
+
+type PageInfo {
+    endCursor: ID
+    hasMore: Boolean!
+}
 
 type Mutation{
     addAnime(title: String!, description: String!): Anime
