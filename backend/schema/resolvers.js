@@ -1,5 +1,5 @@
 const { animes } = require('../data');
-const { offsetPaginate, cursorPaginate} = require('./utils/pagination')
+const { offsetPaginate, cursorPaginate, relayPaginate} = require('./utils/pagination')
 
 let animeList = [...animes];
 
@@ -14,7 +14,11 @@ const resolvers = {
 
     cursorAnimes: (_, { after, limit }) => {
       return cursorPaginate(animeList, after, limit);
-    }
+    },
+
+    relayAnimes: (_, { first, after, last, before }) => {
+      return relayPaginate(animeList, { first, after, last, before });
+    },
   },
 
   Mutation:{

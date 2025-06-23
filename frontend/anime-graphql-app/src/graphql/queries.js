@@ -39,3 +39,25 @@ export const GET_CURSOR_ANIMES = gql`
     }
   }
 `;
+
+export const GET_RELAY_ANIMES = gql`
+  query GetRelayAnimes($first: Int, $after: String, $last: Int, $before: String) {
+    relayAnimes(first: $first, after: $after, last: $last, before: $before) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          title
+          description
+        }
+      }
+    }
+  }
+`;

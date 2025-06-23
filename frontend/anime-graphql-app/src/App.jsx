@@ -4,6 +4,7 @@ import AddAnime from './components/AnimeModal/AddAnime'
 import LoadAll from './components/Pagination/LoadAll';
 import OffsetPagination from './components/Pagination/OffsetPagination'
 import CursorPagination from './components/Pagination/CursorPagination'
+import RelayPagination from './components/Pagination/RelayPagination'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -16,6 +17,9 @@ function App() {
       break;
     case 'cursor':
       ViewComponent = CursorPagination;
+      break;
+    case 'relay':
+      ViewComponent = RelayPagination;
       break;
     default:
       ViewComponent = LoadAll;

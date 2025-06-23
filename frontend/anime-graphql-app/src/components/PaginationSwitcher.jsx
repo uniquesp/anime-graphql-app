@@ -4,7 +4,7 @@ function PaginationSwitcher({ setView }) {
       <button onClick={() => setView('loadAll')}>Load All</button>
       <button onClick={() => setView('offset')}>Offset Pagination</button>
       <button onClick={() => setView('cursor')}>Cursor Pagination</button>
-      <button onClick={() => setView('prevNext')}>Prev/Next</button>
+      <button onClick={() => setView('relay')}>Prev/Next (Relay Cursor)</button>
       <button onClick={() => setView('infinite')}>Infinite Scroll</button>
     </div>
   );

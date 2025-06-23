@@ -23,4 +23,51 @@ function cursorPaginate(array, after = null, limit = 5) {
   };
 }
 
-module.exports = { offsetPaginate, cursorPaginate}
+function relayPaginate(array, { first, after, last, before }) {
+  let startIndex = 0;
+  let endIndex = array.length;
+
+  if (after) {
+    const afterIndex = array.findIndex((item) => item.id === after);
+    if (afterIndex !== -1) startIndex = afterIndex + 1;
+  }
+
+  if (before) {
+    const beforeIndex = array.findIndex((item) => item.id === before);
+    if (beforeIndex !== -1) endIndex = beforeIndex;
+  }
+
+  let sliced = array.slice(startIndex, endIndex);
+
+  if (first !== undefined) {
+    sliced = sliced.slice(0, first);
+  } else if (last !== undefined) {
+    sliced = sliced.slice(-last);
+  }
+
+  const edges = sliced.map((anime) => ({
+    node: anime,
+    cursor: anime.id,
+  }));
+
+  const startCursor = edges[0]?.cursor || null;
+  const endCursor = edges[edges.length - 1]?.cursor || null;
+
+  const firstIndexInArray = array.findIndex((item) => item.id === startCursor);
+  const lastIndexInArray = array.findIndex((item) => item.id === endCursor);
+
+  return {
+    edges,
+    pageInfo: {
+      startCursor,
+      endCursor,
+      hasPreviousPage: firstIndexInArray > 0,
+      hasNextPage: lastIndexInArray < array.length - 1,
+    },
+    totalCount: array.length,
+  };
+}
+
+
+
+module.exports = { offsetPaginate, cursorPaginate, relayPaginate}
