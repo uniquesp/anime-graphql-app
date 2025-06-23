@@ -61,3 +61,23 @@ export const GET_RELAY_ANIMES = gql`
     }
   }
 `;
+
+export const GET_INFINITE_ANIMES = gql`
+  query GetInfiniteAnimes($first: Int, $after: ID) {
+    infiniteAnimes(first: $first, after: $after) {
+      totalCount
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          title
+          description
+        }
+      }
+    }
+  }
+`;

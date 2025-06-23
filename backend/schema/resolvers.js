@@ -1,5 +1,5 @@
 const { animes } = require('../data');
-const { offsetPaginate, cursorPaginate, relayPaginate} = require('./utils/pagination')
+const { offsetPaginate, cursorPaginate, relayPaginate, relayPaginateForInfiniteScroll} = require('./utils/pagination')
 
 let animeList = [...animes];
 
@@ -18,6 +18,10 @@ const resolvers = {
 
     relayAnimes: (_, { first, after, last, before }) => {
       return relayPaginate(animeList, { first, after, last, before });
+    },
+
+    infiniteAnimes: (_, {first, after }) => {
+      return relayPaginateForInfiniteScroll(animeList, {first, after });
     },
   },
 

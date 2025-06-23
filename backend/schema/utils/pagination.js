@@ -68,6 +68,10 @@ function relayPaginate(array, { first, after, last, before }) {
   };
 }
 
+function relayPaginateForInfiniteScroll(array, { first, after }) {
+  return relayPaginate(array, { first, after });
+}
 
 
-module.exports = { offsetPaginate, cursorPaginate, relayPaginate}
+
+module.exports = { offsetPaginate, cursorPaginate, relayPaginate, relayPaginateForInfiniteScroll}

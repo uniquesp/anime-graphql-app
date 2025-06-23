@@ -5,6 +5,8 @@ import LoadAll from './components/Pagination/LoadAll';
 import OffsetPagination from './components/Pagination/OffsetPagination'
 import CursorPagination from './components/Pagination/CursorPagination'
 import RelayPagination from './components/Pagination/RelayPagination'
+import RelayInfiniteScroll from './components/Pagination/RelayInfiniteScroll'
+
 
 function App() {
   const [showModal, setShowModal] = useState(false)
@@ -20,6 +22,9 @@ function App() {
       break;
     case 'relay':
       ViewComponent = RelayPagination;
+      break;
+    case 'infinite':
+      ViewComponent = RelayInfiniteScroll;
       break;
     default:
       ViewComponent = LoadAll;

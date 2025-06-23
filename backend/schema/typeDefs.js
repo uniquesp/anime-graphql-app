@@ -14,6 +14,7 @@ type Query{
     offsetAnimes(offset: Int!, limit: Int!): OffsetAnimeResult!
     cursorAnimes(after: ID, limit: Int!): CursorAnimeResult!
     relayAnimes(first: Int, after: String, last: Int, before: String): RelayAnimeConnection!
+    infiniteAnimes(first: Int, after: ID): InfiniteAnimeResult!
 
 }
 
@@ -49,6 +50,12 @@ type RelayPageInfo {
   hasPreviousPage: Boolean!
   startCursor: String
   endCursor: String
+}
+
+type InfiniteAnimeResult {
+    edges: [RelayAnimeEdge!]!
+    pageInfo: RelayPageInfo!
+    totalCount: Int!
 }
 
 type Mutation{
