@@ -13,8 +13,32 @@ const animes = [
   { id: "12", title: "Code Geass", description: "A rebel prince gains power to command anyone." },
   { id: "13", title: "Steins;Gate", description: "Time travel experiments spiral out of control." },
   { id: "14", title: "Dragon Ball Z", description: "Warriors fight to protect Earth from powerful foes." },
-  { id: "15", title: "Hunter x Hunter", description: "A boy seeks his father and the title of Hunter." }
+  { id: "15", title: "Hunter x Hunter", description: "A boy seeks his father and the title of Hunter." },
+  { id: "16", title: "Black Clover", description: "A boy without magic dreams of becoming the Wizard King." },
+  { id: "17", title: "Fairy Tail", description: "Wizards form bonds and go on epic quests." },
+  { id: "18", title: "Blue Exorcist", description: "A boy discovers he's the son of Satan." },
+  { id: "19", title: "Mob Psycho 100", description: "A psychic teen struggles to control his powers." },
+  { id: "20", title: "Fire Force", description: "Firefighters with special powers fight spontaneous combustion demons." },
+  { id: "21", title: "Parasyte: The Maxim", description: "A boy's hand is taken over by a parasite." },
+  { id: "22", title: "Erased", description: "A man goes back in time to prevent a tragedy." },
+  { id: "23", title: "Vinland Saga", description: "A Viking warrior seeks revenge and meaning." },
+  { id: "24", title: "Psycho-Pass", description: "In a future ruled by crime-predicting tech, a detective questions justice." },
+  { id: "25", title: "The Promised Neverland", description: "Orphans uncover a dark secret and plan their escape." },
+  { id: "26", title: "Akame ga Kill!", description: "Assassins fight against corruption in the capital." },
+  { id: "27", title: "Claymore", description: "Half-human warriors battle monstrous Yoma." },
+  { id: "28", title: "Gintama", description: "A samurai lives in an alien-invaded Edo period." },
+  { id: "29", title: "Re:Zero", description: "A boy relives his death in a fantasy world." },
+  { id: "30", title: "No Game No Life", description: "Siblings are transported to a world where everything is decided by games." },
+  { id: "31", title: "Dr. Stone", description: "A genius teen rebuilds civilization with science." },
+  { id: "32", title: "Toradora!", description: "Two high school students team up to help each other with their crushes." },
+  { id: "33", title: "Your Lie in April", description: "A pianist rediscovers music and life through a violinist." },
+  { id: "34", title: "Haikyuu!!", description: "A short boy dreams of becoming a volleyball champion." },
+  { id: "35", title: "Kuroko's Basketball", description: "A phantom player leads a weak team to victory." },
+  { id: "36", title: "Food Wars!", description: "Culinary battles in an elite cooking school." },
+  { id: "37", title: "The Rising of the Shield Hero", description: "A man is summoned to another world as a disgraced hero." },
+  { id: "38", title: "Charlotte", description: "Teens with powers face tragedy and hope." },
+  { id: "39", title: "Angel Beats!", description: "Students in the afterlife rebel against fate." },
+  { id: "40", title: "Kill la Kill", description: "A girl with a scissor blade battles to find her father's killer." }
 ];
-
 
 module.exports = { animes };
