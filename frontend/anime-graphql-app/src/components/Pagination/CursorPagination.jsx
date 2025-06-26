@@ -9,7 +9,6 @@ const LIMIT = 4;
 
 const CursorPagination = () => {
   const [cursor, setCursor] = useState(null);
-  const [previousCursors, setPreviousCursors] = useState([]);
   const [editingAnime, setEditingAnime] = useState(null);
 
   const { data, loading, error } = useQuery(GET_CURSOR_ANIMES, {
@@ -33,25 +32,13 @@ const CursorPagination = () => {
 
   const handleNext = () => {
     if (pageInfo.hasMore) {
-      setPreviousCursors([...previousCursors, cursor]);
       setCursor(pageInfo.endCursor);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (previousCursors.length > 0) {
-      const newCursors = [...previousCursors];
-      const prevCursor = newCursors.pop();
-      setPreviousCursors(newCursors);
-      setCursor(prevCursor);
-    } else {
-      setCursor(null);
     }
   };
 
   return (
     <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Simple Cursor Pagination</h2>
+      <h2 className="text-xl font-bold mb-4">Forward Cursor Pagination</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {items.map((anime) => (
@@ -64,19 +51,7 @@ const CursorPagination = () => {
         ))}
       </div>
 
-      <div className="mt-6 flex justify-between">
-        <button
-          onClick={handlePrevious}
-          disabled={cursor === null && previousCursors.length === 0}
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-        >
-          Previous
-        </button>
-
-        <span className="text-sm text-gray-600 self-center">
-          Showing {items.length} results
-        </span>
-
+      <div className="mt-6 flex justify-end">
         <button
           onClick={handleNext}
           disabled={!pageInfo.hasMore}
