@@ -35,10 +35,10 @@ const OffsetPagination = () => {
   const pageNumbers = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Offset-Based Pagination</h2>
+    <div style={{ padding: '16px' }}>
+      <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '16px' }}>Offset-Based Pagination</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
         {items.map(anime => (
           <AnimeCard
             key={anime.id}
@@ -49,36 +49,62 @@ const OffsetPagination = () => {
         ))}
       </div>
 
-      <div className="mt-6 flex flex-wrap justify-center items-center gap-2">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-        >
-          Prev
-        </button>
-
-        {pageNumbers.map((page) => (
+      <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '8px', padding: '12px', border: '1px solid #e5e7eb' }}>
           <button
-            key={page}
-            onClick={() => handlePageChange(page)}
-            className={`px-3 py-1 rounded ${
-              page === currentPage
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 hover:bg-gray-300'
-            }`}
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: currentPage === 1 ? '#d1d5db' : '#3b82f6',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
+              fontWeight: '500',
+              transition: 'background-color 0.2s'
+            }}
           >
-            {page}
+            Prev
           </button>
-        ))}
 
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-        >
-          Next
-        </button>
+          {pageNumbers.map((page) => (
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              style={{
+                padding: '8px 16px',
+                backgroundColor: page === currentPage ? '#2563eb' : '#f3f4f6',
+                color: page === currentPage ? 'white' : '#374151',
+                border: 'none',
+                borderRadius: '6px',
+                cursor: 'pointer',
+                fontWeight: '500',
+                transition: 'all 0.2s',
+                boxShadow: page === currentPage ? '0 2px 4px rgba(0, 0, 0, 0.1)' : 'none'
+              }}
+            >
+              {page}
+            </button>
+          ))}
+
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: currentPage === totalPages ? '#d1d5db' : '#3b82f6',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
+              fontWeight: '500',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
 
       {editingAnime && (

@@ -10,7 +10,7 @@ import RelayInfiniteScroll from './components/Pagination/RelayInfiniteScroll'
 
 function App() {
   const [showModal, setShowModal] = useState(false)
- const [view, setView] = useState('loadAll');
+  const [view, setView] = useState('loadAll');
 
   let ViewComponent;
   switch (view) {
@@ -31,16 +31,21 @@ function App() {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
+     <div style={{ padding: '20px' }}>
       <h1 style={{ textAlign: 'center' }}>Anime List</h1>
-      <button
-        style={{ marginBottom: '15px', padding: '8px 16px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
-        onClick={() => setShowModal(true)}
-      >
-        + Add Anime
-      </button>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '15px' }}>
+        <button
+          style={{ padding: '8px 16px', background: '#007bff', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+          onClick={() => setShowModal(true)}
+        >
+          + Add Anime
+        </button>
+      </div>
 
-      <PaginationSwitcher setView={setView} />
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+        <PaginationSwitcher setView={setView} />
+      </div>
+      
       <ViewComponent />
       {showModal && <AddAnime closeModal={() => setShowModal(false)} />}
     </div>
