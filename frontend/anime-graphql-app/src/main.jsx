@@ -8,7 +8,7 @@ import {
 } from '@apollo/client'
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/', 
+  uri: import.meta.env.VITE_GRAPHQL_URI,
   cache: new InMemoryCache(),
 })
 
