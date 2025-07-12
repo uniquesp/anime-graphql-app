@@ -30,11 +30,21 @@ const RelayPagination = () => {
 
   const { edges, pageInfo } = data.relayAnimes;
 
-  return (
-    <div className="p-4">
-      <h2 className="text-xl font-bold mb-4">Relay-style Pagination</h2>
+  const handlePrevious = () => {
+    setBefore(pageInfo.startCursor);
+    setAfter(null);
+  };
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+  const handleNext = () => {
+    setAfter(pageInfo.endCursor);
+    setBefore(null);
+  };
+
+  return (
+    <div style={{ padding: '16px' }}>
+      <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '16px' }}>Relay-style Pagination</h2>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
         {edges.map(({ node }) => (
           <AnimeCard
             key={node.id}
@@ -45,32 +55,46 @@ const RelayPagination = () => {
         ))}
       </div>
 
-      <div className="mt-6 flex justify-between">
-        <button
-          onClick={() => {
-            setBefore(pageInfo.startCursor);
-            setAfter(null);
-          }}
-          disabled={!pageInfo.hasPreviousPage}
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
-        >
-          Previous
-        </button>
-
-        <span className="text-sm text-gray-600 self-center">
-          Showing {edges.length} results
-        </span>
-
-        <button
-          onClick={() => {
-            setAfter(pageInfo.endCursor);
-            setBefore(null);
-          }}
-          disabled={!pageInfo.hasNextPage}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50"
-        >
-          Next
-        </button>
+      <div style={{ marginTop: '32px', display: 'flex', justifyContent: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', backgroundColor: 'white', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', borderRadius: '8px', padding: '12px', border: '1px solid #e5e7eb', gap: '16px' }}>
+          <button
+            onClick={handlePrevious}
+            disabled={!pageInfo.hasPreviousPage}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: !pageInfo.hasPreviousPage ? '#d1d5db' : '#3b82f6',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: !pageInfo.hasPreviousPage ? 'not-allowed' : 'pointer',
+              fontWeight: '500',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            Previous
+          </button>
+          
+          <span style={{ color: '#6b7280', fontSize: '0.875rem' }}>
+            Showing {edges.length} results
+          </span>
+          
+          <button
+            onClick={handleNext}
+            disabled={!pageInfo.hasNextPage}
+            style={{
+              padding: '8px 16px',
+              backgroundColor: !pageInfo.hasNextPage ? '#d1d5db' : '#3b82f6',
+              color: 'white',
+              border: 'none',
+              borderRadius: '6px',
+              cursor: !pageInfo.hasNextPage ? 'not-allowed' : 'pointer',
+              fontWeight: '500',
+              transition: 'background-color 0.2s'
+            }}
+          >
+            Next
+          </button>
+        </div>
       </div>
 
       {editingAnime && (
