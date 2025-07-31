@@ -145,7 +145,7 @@ npm start
   
   **Want to understand how pagination works in GraphQL with Apollo Client?**
   
-  [![Blog](https://img.shields.io/badge/📖_Read_Blog-GraphQL_Pagination_in_React-4285F4?style=for-the-badge&logo=medium&logoColor=white)](https://your-blog-link.com)
+  [![Blog](https://img.shields.io/badge/📖_Read_Blog-GraphQL_Pagination_in_React-4285F4?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@uniquesp13/graphql-pagination-in-react-offset-vs-cursor-2bbb04011873)
   
 </div>
 
